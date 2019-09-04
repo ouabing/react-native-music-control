@@ -63,11 +63,14 @@ RCT_EXPORT_MODULE()
     return dispatch_get_main_queue();
 }
 
-RCT_EXPORT_METHOD(updatePlayback:(NSDictionary *) originalDetails)
+RCT_EXPORT_METHOD(updatePlayback:(NSDictionary *) originalDetails
+                  resolver:(RCTPromiseResolveBlock) resolve
+                  rejecter:(RCTPromiseRejectBlock) reject)
 {
     MPNowPlayingInfoCenter *center = [MPNowPlayingInfoCenter defaultCenter];
 
     if (center.nowPlayingInfo == nil) {
+        resolve(nil)
         return;
     }
 
@@ -105,10 +108,13 @@ RCT_EXPORT_METHOD(updatePlayback:(NSDictionary *) originalDetails)
 
     NSString *artworkUrl = [self getArtworkUrl:[originalDetails objectForKey:@"artwork"]];
     [self updateArtworkIfNeeded:artworkUrl];
+    resolve(nil)
 }
 
 
-RCT_EXPORT_METHOD(setNowPlaying:(NSDictionary *) details)
+RCT_EXPORT_METHOD(setNowPlaying:(NSDictionary *) details
+                  resolver:(RCTPromiseResolveBlock) resolve
+                  rejecter:(RCTPromiseRejectBlock) reject)
 {
     MPNowPlayingInfoCenter *center = [MPNowPlayingInfoCenter defaultCenter];
     NSMutableDictionary *mediaDict = [NSMutableDictionary dictionary];
@@ -118,13 +124,17 @@ RCT_EXPORT_METHOD(setNowPlaying:(NSDictionary *) details)
 
     NSString *artworkUrl = [self getArtworkUrl:[details objectForKey:@"artwork"]];
     [self updateArtworkIfNeeded:artworkUrl];
+    resolve(nil)
 }
 
-RCT_EXPORT_METHOD(resetNowPlaying)
+RCT_EXPORT_METHOD(resetNowPlaying,
+                  resolver:(RCTPromiseResolveBlock) resolve
+                  rejecter:(RCTPromiseRejectBlock) reject)
 {
     MPNowPlayingInfoCenter *center = [MPNowPlayingInfoCenter defaultCenter];
     center.nowPlayingInfo = nil;
     self.artworkUrl = nil;
+    resolve(nil)
 }
 
 RCT_EXPORT_METHOD(enableControl:(NSString *) controlName enabled:(BOOL) enabled options:(NSDictionary *)options)
