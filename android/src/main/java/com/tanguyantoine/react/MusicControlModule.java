@@ -189,7 +189,7 @@ public class MusicControlModule extends ReactContextBaseJavaModule implements Co
 
         Intent myIntent = new Intent(context, MusicControlNotification.NotificationService.class);
 
-        afListener = new MusicControlAudioFocusListener(context, emitter, volume);
+        // afListener = new MusicControlAudioFocusListener(context, emitter, volume);
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             context.startForegroundService(myIntent);
@@ -245,11 +245,11 @@ public class MusicControlModule extends ReactContextBaseJavaModule implements Co
 
     @ReactMethod
     public void observeAudioInterruptions(boolean enable) {
-        if (enable) {
-            afListener.requestAudioFocus();
-        } else {
-            afListener.abandonAudioFocus();
-        }
+        // if (enable) {
+        //     afListener.requestAudioFocus();
+        // } else {
+        //     afListener.abandonAudioFocus();
+        // }
     }
 
     @ReactMethod
