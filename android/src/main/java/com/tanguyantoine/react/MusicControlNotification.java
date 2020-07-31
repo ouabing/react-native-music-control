@@ -55,22 +55,22 @@ public class MusicControlNotification {
     }
 
     public synchronized void updateActions(long mask, Map<String, Integer> options) {
-        play = createAction("play", "Play", mask, PlaybackStateCompat.ACTION_PLAY, play);
-        pause = createAction("pause", "Pause", mask, PlaybackStateCompat.ACTION_PAUSE, pause);
-        stop = createAction("stop", "Stop", mask, PlaybackStateCompat.ACTION_STOP, stop);
-        next = createAction("next", "Next", mask, PlaybackStateCompat.ACTION_SKIP_TO_NEXT, next);
-        previous = createAction("previous", "Previous", mask, PlaybackStateCompat.ACTION_SKIP_TO_PREVIOUS, previous);
+        play = createAction("play", "播放", mask, PlaybackStateCompat.ACTION_PLAY, play);
+        pause = createAction("pause", "暂停", mask, PlaybackStateCompat.ACTION_PAUSE, pause);
+        stop = createAction("stop", "停止", mask, PlaybackStateCompat.ACTION_STOP, stop);
+        next = createAction("next", "下一个", mask, PlaybackStateCompat.ACTION_SKIP_TO_NEXT, next);
+        previous = createAction("previous", "上一个", mask, PlaybackStateCompat.ACTION_SKIP_TO_PREVIOUS, previous);
 
         if (options != null && options.containsKey("skipForward") && (options.get("skipForward") == 10 || options.get("skipForward") == 5 || options.get("skipForward") == 30)) {
-            skipForward = createAction("skip_forward_" + options.get("skipForward").toString(), "Skip Forward", mask, PlaybackStateCompat.ACTION_FAST_FORWARD, skipForward);
+            skipForward = createAction("skip_forward_" + options.get("skipForward").toString(), "快进", mask, PlaybackStateCompat.ACTION_FAST_FORWARD, skipForward);
         } else {
-            skipForward = createAction("skip_forward_10", "Skip Forward", mask, PlaybackStateCompat.ACTION_FAST_FORWARD, skipForward);
+            skipForward = createAction("skip_forward_10", "快进", mask, PlaybackStateCompat.ACTION_FAST_FORWARD, skipForward);
         }
 
         if (options != null && options.containsKey("skipBackward") && (options.get("skipBackward") == 10 || options.get("skipBackward") == 5 || options.get("skipBackward") == 30)) {
-            skipBackward = createAction("skip_backward_" + options.get("skipBackward").toString(), "Skip Backward", mask, PlaybackStateCompat.ACTION_REWIND, skipBackward);
+            skipBackward = createAction("skip_backward_" + options.get("skipBackward").toString(), "快退", mask, PlaybackStateCompat.ACTION_REWIND, skipBackward);
         } else {
-            skipBackward = createAction("skip_backward_10", "Skip Backward", mask, PlaybackStateCompat.ACTION_REWIND, skipBackward);
+            skipBackward = createAction("skip_backward_10", "快退", mask, PlaybackStateCompat.ACTION_REWIND, skipBackward);
         }
     }
 
