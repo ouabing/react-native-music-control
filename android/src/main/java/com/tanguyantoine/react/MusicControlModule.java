@@ -69,7 +69,7 @@ public class MusicControlModule extends ReactContextBaseJavaModule implements Co
 
     public NotificationClose notificationClose = NotificationClose.PAUSED;
 
-    private String channelId = "gcores";
+    private String channelId = "react-native-music-control";
     private int notificationId = 100;
 
     public MusicControlModule(ReactApplicationContext context) {
