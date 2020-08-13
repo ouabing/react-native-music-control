@@ -8,3 +8,6 @@ node_modules/
 .envrc
 .npmrc
 package-lock.json
+android/.classpath
+android/.project
+android/.settings
