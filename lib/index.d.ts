@@ -1,5 +1,4 @@
 import { Command } from './types';
-declare type TPlayingInfo = any;
 declare const MusicControl: {
     STATE_PLAYING: any;
     STATE_PAUSED: any;
@@ -12,11 +11,10 @@ declare const MusicControl: {
     RATING_4_STARS: any;
     RATING_5_STARS: any;
     RATING_PERCENTAGE: any;
-    setNotificationIds: (notificationId: number, channelId: String) => void;
     enableBackgroundMode: (enable: boolean) => void;
-    setNowPlaying: (info: TPlayingInfo) => void;
-    setPlayback: (info: TPlayingInfo) => void;
-    updatePlayback: (info: TPlayingInfo) => void;
+    setNowPlaying: (info: any) => void;
+    setPlayback: (info: any) => void;
+    updatePlayback: (info: any) => void;
     resetNowPlaying: () => void;
     enableControl: (controlName: string, enable: boolean, options?: {}) => void;
     handleCommand: (commandName: Command, value: any) => void;

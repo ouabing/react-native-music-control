@@ -179,6 +179,8 @@ RCT_EXPORT_METHOD(enableControl:(NSString *) controlName enabled:(BOOL) enabled 
 
 RCT_EXPORT_METHOD(enableBackgroundMode:(BOOL) enabled){
     AVAudioSession *session = [AVAudioSession sharedInstance];
+    // gcores: 支持 siri 时停止电台播放
+    [session setMode: AVAudioSessionModeSpokenAudio error: nil];
     [session setCategory: AVAudioSessionCategoryPlayback error: nil];
     [session setActive: enabled error: nil];
 }
